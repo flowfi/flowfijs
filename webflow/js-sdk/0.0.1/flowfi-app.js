@@ -1,3 +1,8 @@
+/*
+ * custom webflow bridge between webflow designer & the firebase, stripe SDKs
+ */
+
+
 
 var privatePages = [
   '/auth/register-success',
@@ -125,6 +130,7 @@ elements.forEach(function(element, index) {
 
 /*
  * LOGIN
+ * - login page form submit event handler
  *
  */
 var elements = document.getElementsByClassName('js-login-form-submit-btn');
@@ -200,6 +206,7 @@ function loginSubmitHandler () {
  * REGISTER
  *
  * - create user account in firebase-sdk
+ * - register page form submit event handler
  */
 
      
@@ -260,3 +267,11 @@ Webflow.push(function() {
     });
   })
 });
+
+
+
+
+
+
+
+
