@@ -136,22 +136,26 @@ elements.forEach(function(element, index) {
 var elements = document.getElementsByClassName('js-login-form-submit-btn');
 elements.forEach(function(element, index) {
   element.addEventListener('click', function(event) {
+    console.warn('[js-login-form-submit-btn]');
     event.preventDefault();
 
     var $form = $('#wf-form-loginForm');
     var $loginError = $('#loginError');
     var $loginButton = $('#loginButton');
-    var formData = $form.serialize();
+    //var formData = $form.serializeArray();
+    
+    var formData = {
+      email: $('#loginForm-email').val(),
+      password: $('#loginForm-password').val()
+    };
     console.info('formData:', formData);
 
     // reset ui-state to hide previous errors/feedback
-    loginButton.style.display = 'none';
+    console.info('resetting ui-state to hide previous errors/feedback');
     $loginError.hide();
+    $loginButton.hide();
 
-    var email = loginEmail.value;
-    var password = loginPassword.value;
-
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    firebase.auth().signInWithEmailAndPassword(formData.email, formData.password)
       .then (function () {
         console.info('[firebase-sdk]', 'signin success callback');
         
@@ -160,43 +164,26 @@ elements.forEach(function(element, index) {
         window.location.replace(FlowFi.login_redirect_url);
       })
       .catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        
         console.warn('FlowFi][firebase][login-callback]', 'login failed.');
         console.warn('- error object:', error);
-        console.warn('- error code:', errorCode);
-        console.warn('- error message:', errorMessage);
+        console.warn('- error code:', error.code);
+        console.warn('- error message:', error.message);
 
-        loginButton.style.display = 'block';
-        $(loginError).innerText = errorMessage;
-        loginError.style.display = 'block'
+        var errorMessage = '<div>';
+        errorMessage += 'something went wrong, please try again.';
+        errorMessage += '<br><br>';
+        errorMessage += '[reference code: '+ error.code +']';
+        errorMessage += '<br>';
+        errorMessage += '[reference message: '+ error.message +']';
+        errorMessage += '</div>';
+
+        $loginButton.show();
+        $loginError.show();
+        $loginError.html(errorMessage);
     });
 
   });
 });
-
-function loginSubmitHandler () {
-  loginButton.style.display = 'none';
-  loginError.style.display = 'none';
-
-  var email = loginEmail.value;
-  var password = loginPassword.value;
-
-  firebase.auth().signInWithEmailAndPassword(email, password)
-      .then (function () {
-          window.location.replace('./shop');
-  })
-  .catch(function(error) {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log('Error code: ' + errorCode);
-    console.log('Error message: ' + errorMessage);
-    loginButton.style.display = 'block';
-    loginError.innerText = errorMessage;
-    loginError.style.display = 'block'
-  });
-}
 
 
 
