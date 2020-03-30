@@ -158,9 +158,6 @@ elements.forEach(function(element, index) {
     firebase.auth().signInWithEmailAndPassword(formData.email, formData.password)
       .then (function () {
         console.info('[firebase-sdk]', 'signin success callback');
-        
-        alert('continue?');
-
         window.location.replace(FlowFi.login_redirect_url);
       })
       .catch(function(error) {
