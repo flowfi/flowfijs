@@ -7,8 +7,8 @@
 var privatePages = [
   '/auth/register-success',
   '/cart',
-  '/checkout',
-  '/angies-story'
+  '/checkout'
+  // '/angies-story'
 ];
 
 var publicPages = [
@@ -52,8 +52,8 @@ f.onAuthStateChanged(function(user) {
       console.log('User is logged in..');
       console.info('[litbox.onAuthStateChanged]', 'firebase user:', user);
       
-      console.info('Email: ' + user.email);
-      console.info('UID: ' + user.uid);
+      // console.info('Email: ' + user.email);
+      // console.info('UID: ' + user.uid);
 
 
       // show all elements flagged for authenticated user
@@ -209,7 +209,11 @@ elements.forEach(function(element, index) {
     var password = signupPassword.value;
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then (function () {
+
+      // [TODO-RESUME-HERE]  fix firebase sdk race condition with createUserWithEmailAndPassword vs authStateChanged
+      
       window.location.replace(FlowFi.register_redirect_url);
+
     }).catch(function (error) {
       // debug logging
       var errorCode = error.code;
