@@ -13,8 +13,7 @@ var privatePages = [
 var publicPages = [
   '/auth/register',
   '/auth/activate',
-  '/auth/login',
-  '/cart'
+  '/auth/login'
 ];
 
 
