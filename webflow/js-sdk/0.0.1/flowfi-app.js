@@ -5,7 +5,8 @@
 
 
 var privatePages = [
-  '/auth/register-success'
+  '/auth/register-success',
+  '/checkout'
   // '/angies-story'
 ];
 
@@ -13,8 +14,7 @@ var publicPages = [
   '/auth/register',
   '/auth/activate',
   '/auth/login',
-  '/cart',
-  '/checkout'
+  '/cart'
 ];
 
 
@@ -24,7 +24,7 @@ var publicPages = [
 
 var FlowFi = {
   register_redirect_url: '/auth/register-success',
-  login_redirect_url: '/shop'
+  login_redirect_url: '/checkout'
 };
 
 
