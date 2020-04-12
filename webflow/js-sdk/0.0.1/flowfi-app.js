@@ -6,7 +6,6 @@
 
 var privatePages = [
   '/auth/register-success',
-  '/cart',
   '/checkout'
   // '/angies-story'
 ];
