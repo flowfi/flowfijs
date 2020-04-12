@@ -24,7 +24,7 @@ var publicPages = [
 
 var FlowFi = {
   register_redirect_url: '/auth/register-success',
-  login_redirect_url: '/angies-story'
+  login_redirect_url: '/shop'
 };
 
 
