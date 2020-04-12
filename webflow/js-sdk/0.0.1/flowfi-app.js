@@ -5,15 +5,16 @@
 
 
 var privatePages = [
-  '/auth/register-success',
-  '/checkout'
+  '/auth/register-success'
   // '/angies-story'
 ];
 
 var publicPages = [
   '/auth/register',
   '/auth/activate',
-  '/auth/login'
+  '/auth/login',
+  '/cart',
+  '/checkout'
 ];
 
 
