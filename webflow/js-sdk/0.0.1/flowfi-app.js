@@ -23,10 +23,8 @@ var publicPages = [
 */
 
 var FlowFi = {
-  register_redirect_url: '/auth/register-success',
-  login_redirect_url: '/checkout'
+  register_redirect_url: '/auth/register-success'
 };
-
 
 
 
