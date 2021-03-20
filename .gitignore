@@ -1,4 +1,5 @@
-.DS*
+# Macos
+.DS_Store
 
 # Logs
 logs
